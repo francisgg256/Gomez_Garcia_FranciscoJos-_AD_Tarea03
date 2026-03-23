@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="es.damdi.francisco.dominio.Centro" table="CENTROS">
+
+        <id name="codCentro" column="COD_CENTRO">
+            <generator class="assigned"/>
+        </id>
+
+        <property name="nomCentro" column="NOM_CENTRO" type="string"/>
+        <property name="direccion" column="DIRECCION" type="string"/>
+        <property name="localidad" column="LOCALIDAD" type="string"/>
+        <property name="provincia" column="PROVINCIA" type="string"/>
+
+        <many-to-one name="director" class="es.damdi.francisco.dominio.Profesor" column="DIRECTOR" />
+
+        <set name="profesores" inverse="true">
+            <key column="COD_CENTRO"/>
+            <one-to-many class="es.damdi.francisco.dominio.Profesor"/>
+        </set>
+
+    </class>
+</hibernate-mapping>

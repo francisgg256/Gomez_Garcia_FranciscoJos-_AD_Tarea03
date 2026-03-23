@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="es.damdi.francisco.dominio.Asignatura" table="ASIGNATURAS">
+
+        <id name="codAsig" column="COD_ASIG">
+            <generator class="assigned"/>
+        </id>
+
+        <property name="nombreAsi" column="NOMBRE_ASI" type="string"/>
+
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="es.damdi.francisco.dominio.Profesor" table="PROFESORES">
+
+        <id name="codProf" column="COD_PROF">
+            <generator class="assigned"/>
+        </id>
+
+        <property name="nombreApe" column="NOMBRE_APE" type="string"/>
+        <property name="fechaNac" column="FECHA_NAC" type="date"/>
+        <property name="sexo" column="SEXO" type="string"/>
+
+        <many-to-one name="especialidad" class="es.damdi.francisco.dominio.Especialidad" column="ESPECIALIDAD" />
+
+        <many-to-one name="centro" class="es.damdi.francisco.dominio.Centro" column="COD_CENTRO" />
+
+        <many-to-one name="jefe" class="es.damdi.francisco.dominio.Profesor" column="COD_PROF1" />
+
+        <set name="asignaturas" table="ASIGPROF" inverse="false" cascade="all">
+            <key column="PROFESORES_COD_PROF"/>
+            <many-to-many class="es.damdi.francisco.dominio.Asignatura" column="ASIGNATURAS_COD_ASIG"/>
+        </set>
+
+    </class>
+</hibernate-mapping>
